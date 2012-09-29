@@ -76,11 +76,11 @@
       <div class="control-group">
         <div class="controls">
           <label class="radio">
-            <input type="radio" name="flag" id="optionsRadios1" value="a" checked>
+            <input type="radio" name="provide_flag" id="optionsRadios1" value="p" checked>
             Provide Compost
           </label>
           <label class="radio">
-            <input type="radio" name="flag" id="optionsRadios2" value="b">
+            <input type="radio" name="provide_flag" id="optionsRadios2" value="r">
             Receive Compost
           </label>
         </div>
@@ -89,12 +89,18 @@
       <div class="control-group">
         <div class="controls">
           <label class="radio">
-            <input type="radio" name="flag" id="optionsRadios1" value="c" checked>
-            Deliver
+            <input type="radio" name="deliver_flag" id="optionsRadios3" value="d" checked>
+            <!-- IF provider -->
+            I am willing to <i><b>deliver</b></i> my compost
+            <!-- IF receiver -->
+            I would like compost <i><b>delivered</b></i> to me
           </label>
           <label class="radio">
-            <input type="radio" name="flag" id="optionsRadios2" value="d">
-            Pickup
+            <input type="radio" name="deliver_flag" id="optionsRadios4" value="p">
+            <!-- IF provider -->
+            I would like my compost <i><b>picked up</b></i>
+            <!-- IF receiver -->
+            I am willing to <i><b>pick up</b></i> compost
           </label>
         </div>
       </div>
