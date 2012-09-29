@@ -3,7 +3,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>We Compost : Compost Matchmakers | Sign In</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -34,6 +34,7 @@
     <script src="//connect.facebook.net/en_US/all.js"></script>
     <div id="fb-root"></div>
     <script>
+      var user_id;
       // Load the SDK Asynchronously
       (function(d){
          var js, id = 'facebook-jssdk', ref = d.getElementsByTagName('script')[0];
@@ -75,12 +76,11 @@
            FB.login(function(response) {
              if (response.authResponse) {
               if (response.status === "connected"){
-
+                user_id = response.authResponse.userID;
                 $.get('http://www.grasshopper.ca/composte/usercheck.php?userid='+response.authResponse.userID, function(data) {
                   //redirect page
-
                   if (jQuery.parseJSON(data).exists === "no"){
-                    window.location.replace("/composte/signup.html");
+                    window.location.replace("/composte/signup.html?user_id="+user_id);
                   }else{
                     window.location.replace("/composte/homepage.html");
                   }
