@@ -77,7 +77,6 @@
              if (response.authResponse) {
               if (response.status === "connected"){
                 user_id = response.authResponse.userID;
-                $.get('http://www.grasshopper.ca/composte/usercheck.php?userid='+response.authResponse.userID, function(data) {
                 $.get('usercheck.php?userid='+response.authResponse.userID, function(data) {
                   //redirect page
                   if (jQuery.parseJSON(data).exists === "no"){
