@@ -1,13 +1,52 @@
 <?php
 include("dbinfo.php");
 
+$street = utf8_decode($_GET["street"]);
+$postcode = utf8_decode($_GET["postcode"]);
+
 $userid = utf8_decode($_GET["userid"]);
 $name = utf8_decode($_GET["name"]);
-$firstname = utf8_decode($_GET["firstname"]);
 $email = utf8_decode($_GET["email"]);
-$lat = utf8_decode($_GET["lat"]);
-$lng = utf8_decode($_GET["lng"]);
 $flag = utf8_decode($_GET["flag"]);
+
+
+//Geocode 
+
+$address = $street." ".$postcode." canada";
+
+
+$base_url = "http://maps.google.com/maps/api/geocode/json?language=en&region=ca&sensor=false";
+// Anfrage URL
+$request_url = $base_url."&address=".urlencode($address);
+// Anfrage an Geocode-Server schicken
+$json = file_get_contents($request_url) or die("url not loading");
+// Resultat in Array umwandeln
+$result = json_decode($json,true);
+
+$status = $result['status'];
+
+if (strcmp($status, "OK") == 0) {
+   // Successful geocode
+   $lat_address = $result['results']['0']['geometry']['location']['lat'];
+	 $lng_address = $result['results']['0']['geometry']['location']['lng'];
+   
+	 $vaddress = utf8_decode(preg_replace('/,/', '<br>', $result['results']['0']['formatted_address']));
+   
+	 $fault = FALSE;
+   
+	 if (!isset($lat)) {
+      $lat = $lat_address;
+      $lng = $lng_address;
+   }
+}
+else {
+   // failure to geocode
+   $fault = TRUE;
+   if (!isset($lat)) {
+      $lat = 49.2779;
+      $lng = -123.113;
+   }
+}
 
 
 // Opens a connection to a mySQL server
@@ -29,6 +68,6 @@ $result = mysql_query($sql);
 $num_results = mysql_affected_rows($connection);
 mysql_close ($connection);
 
-echo $sql;
+header('Location: homepage.html?userid='.$userid);
 
 ?>
