@@ -3,11 +3,11 @@ include("dbinfo.php");
 
 $userid = utf8_decode($_GET["userid"]);
 $name = utf8_decode($_GET["name"]);
-$name = utf8_decode($_GET["firstname"]);
-$name = utf8_decode($_GET["email"]);
-$name = utf8_decode($_GET["lat"]);
-$name = utf8_decode($_GET["lng"]);
-$name = utf8_decode($_GET["flag"]);
+$firstname = utf8_decode($_GET["firstname"]);
+$email = utf8_decode($_GET["email"]);
+$lat = utf8_decode($_GET["lat"]);
+$lng = utf8_decode($_GET["lng"]);
+$flag = utf8_decode($_GET["flag"]);
 
 
 // Opens a connection to a mySQL server
@@ -23,16 +23,12 @@ if (!$db_selected) {
 }
 
 //SQL Anlage
-$sql = "INSERT INTO `composte`.`users` (`userID`, `name`, `firstname`, `email`, `lat`, `lng`, `flag`) VALUES ($userid, $name, $firstname, $email, $lat, $lng, $flag);";
+$sql = "INSERT INTO `composte`.`users` (`userID`, `name`, `firstname`, `email`, `lat`, `lng`, `flag`) VALUES (".$userid.", '".$name."', '".$firstname."', '".$email."', ".$lat.", ".$lng.", '".$flag."');";
 $result = mysql_query($sql);
 
 $num_results = mysql_affected_rows($connection);
 mysql_close ($connection);
 
-if ($num_results > 0) {
-	echo '{"exists": "yes"}';
-} else {
-	echo '{"exists": "no"}';
-}
+echo $sql;
 
 ?>
