@@ -72,7 +72,25 @@
 
         // respond to clicks on the login and logout links
         document.getElementById('auth-loginlink').addEventListener('click', function(){
-          FB.login();
+           FB.login(function(response) {
+             if (response.authResponse) {
+              if (response.status === "connected"){
+
+                $.get('http://www.grasshopper.ca/composte/usercheck.php?userid='+response.authResponse.userID, function(data) {
+                  //redirect page
+                  if (data.exists === "no"){
+                    window.location.replace("/compost/signup.html");
+                  }else{
+                    window.location.replace("/compost/homepage.html");
+                  }
+                
+                });
+
+              } 
+             }else {
+               console.log('User cancelled login or did not fully authorize.');
+             }
+           });
         });
         document.getElementById('auth-logoutlink').addEventListener('click', function(){
           FB.logout();
