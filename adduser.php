@@ -68,6 +68,6 @@ $result = mysql_query($sql);
 $num_results = mysql_affected_rows($connection);
 mysql_close ($connection);
 
-header('Location: homepage.html?userid='.$userid);
+header('Location: homepage.html?userid='.$userid."&deliver_flag=".$deliver_flag."&provide_flag=".$provide_flag);
 
 ?>
