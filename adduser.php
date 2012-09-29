@@ -7,8 +7,8 @@ $postcode = utf8_decode($_GET["postcode"]);
 $userid = utf8_decode($_GET["userid"]);
 $name = utf8_decode($_GET["name"]);
 $email = utf8_decode($_GET["email"]);
-$flag = utf8_decode($_GET["flag"]);
-
+$deliver_flag = utf8_decode($_GET["deliver_flag"]);
+$provide_flag = utf8_decode($_GET["provide_flag"]);
 
 //Geocode 
 
@@ -62,12 +62,12 @@ if (!$db_selected) {
 }
 
 //SQL Anlage
-$sql = "INSERT INTO `composte`.`users` (`userID`, `name`, `firstname`, `email`, `lat`, `lng`, `flag`) VALUES (".$userid.", '".$name."', '".$firstname."', '".$email."', ".$lat.", ".$lng.", '".$flag."');";
+$sql = "INSERT INTO `composte`.`users` (`userID`, `name`, `firstname`, `email`, `lat`, `lng`, `provide_flag`, `deliver_flag`) VALUES (".$userid.", '".$name."', '".$firstname."', '".$email."', ".$lat.", ".$lng.", '".$provide_flag."', '".$deliver_flag."');";
 $result = mysql_query($sql);
 
 $num_results = mysql_affected_rows($connection);
 mysql_close ($connection);
 
-header('Location: homepage.html?userid='.$userid);
+header('Location: homepage.html?userid='.$userid."&deliver_flag=".$deliver_flag."&provide_flag=".$provide_flag);
 
 ?>
