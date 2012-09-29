@@ -78,10 +78,11 @@
 
                 $.get('http://www.grasshopper.ca/composte/usercheck.php?userid='+response.authResponse.userID, function(data) {
                   //redirect page
-                  if (data.exists === "no"){
-                    window.location.replace("/compost/signup.html");
+
+                  if (jQuery.parseJSON(data).exists === "no"){
+                    window.location.replace("/composte/signup.html");
                   }else{
-                    window.location.replace("/compost/homepage.html");
+                    window.location.replace("/composte/homepage.html");
                   }
                 
                 });
