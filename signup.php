@@ -91,14 +91,14 @@
           <label class="radio">
             <input type="radio" name="deliver_flag" id="optionsRadios3" value="d" checked>
             <!-- IF provider -->
-            I am willing to <i><b>deliver</b></i> my compost
+            Deliver: I am willing to <i><b>deliver</b></i> my compost / 
             <!-- IF receiver -->
             I would like compost <i><b>delivered</b></i> to me
           </label>
           <label class="radio">
             <input type="radio" name="deliver_flag" id="optionsRadios4" value="p">
             <!-- IF provider -->
-            I would like my compost <i><b>picked up</b></i>
+            Pick Up: I would like my compost <i><b>picked up</b></i> / 
             <!-- IF receiver -->
             I am willing to <i><b>pick up</b></i> compost
           </label>
