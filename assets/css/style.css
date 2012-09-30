@@ -1,0 +1,52 @@
+ @import url(fonts/bebas/bebasNeue.css);
+ @import url(fonts/bre-serif/bre-serif.css);
+
+footer{
+	background-color: black;
+	height: 60px;
+}
+
+body{
+background-image:url('../img/bg-texture.jpg');
+background-repeat:repeat;
+}
+
+#signup-panel{
+	position: relative;
+	text-align: center;
+}
+
+#signup-image{
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+
+
+.signup-btn{
+	position: relative;
+	top: -150px;
+	left: 270px;
+	height: 145px;
+	width: 400px;
+	display: block;
+	text-indent: -9999px;
+	border: 0;
+}
+
+
+
+.title-header{
+	font-family: 'BebasNeueRegular';
+	font-size: 38px;
+	color:white;
+	padding-top: 30px;
+	text-align: center;
+}
+
+.title-desc{
+	font-family: 'BreeSerifRegular';
+	color:white;
+	font-size: 16px;
+	text-align: center;
+	padding-top: 5px;
+}
