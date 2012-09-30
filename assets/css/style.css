@@ -50,3 +50,38 @@ background-repeat:repeat;
 	text-align: center;
 	padding-top: 5px;
 }
+
+
+@import url(../assets/fonts/modern-pics/modernpic.css); 
+ 
+html, body {
+    margin: 0;
+}
+ 
+.wrapper {
+    width: 960px;
+    margin: 0 auto; 
+}
+ 
+#body {
+    background: url(../img/bg-texture.jpg); 
+    float: left;
+}
+ 
+header {
+    height: 60px;
+    background: #1e1900;
+}
+ 
+article {
+    width: 200px;
+    border-radius: 15px;
+    background: #fff;
+    margin: 15px 10px; 
+    float: left;
+    padding: 10px;
+}
+ 
+article span {
+    font-family: 'ModernPictogramsNormal'; 
+}
