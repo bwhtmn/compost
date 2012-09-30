@@ -11,6 +11,10 @@ background-image:url('../img/bg-texture.jpg');
 background-repeat:repeat;
 }
 
+.header-img{
+	height: 40px;
+}
+
 #signup-panel{
 	position: relative;
 	text-align: center;

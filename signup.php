@@ -50,11 +50,20 @@
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
+            <span class="icon-bar">About</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <img src="assets/img/logo.jpg"/>
+          
+
+            <ul class="nav">
+              <li>
+                <img class="header-img" src="assets/img/logo.jpg"/>
+              </li>
+              <li class="right">
+                <a href="about.html">About</a>
+              </li>
+            </ul>
         </div>
       </div>
     </div>
