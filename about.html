@@ -9,6 +9,7 @@
 
     <!-- Le styles -->
     <link href="assets/css/bootstrap.css" rel="stylesheet">
+    <link href="assets/css/style.css" rel="stylesheet">
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -36,11 +37,20 @@
       <div class="navbar-inner">
         <div class="container">
           <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
-            <span class="icon-bar"></span>
+            <span class="icon-bar">About</span>
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </a>
-          <img src="assets/img/logo.jpg"/>
+          
+
+            <ul class="nav">
+              <li>
+                <img class="header-img" src="assets/img/logo.jpg"/>
+              </li>
+              <li class="right">
+                <a href="about.html">About</a>
+              </li>
+            </ul>
         </div>
       </div>
     </div>
@@ -72,11 +82,11 @@
   <li>By reducing the amount of organic matter in the landfills, we can bring the level of greenhouse gases down.</li>
 </ul>
 <p><strong>What can I compost?</strong></p>
-<table border="0" cellspacing="0" cellpadding="0" width="800">
-  <tr>
+<table class="table" border="0" cellspacing="0" cellpadding="0" width="800">
+  <th>
     <td width="271" nowrap="nowrap" colspan="4" valign="bottom"><p align="center"><strong>YES</strong></p></td>
     <td width="252" nowrap="nowrap" colspan="4" valign="bottom"><p align="center"><strong>NO</strong></p></td>
-  </tr>
+  </th>
   <tr>
     <td width="8" nowrap="nowrap" valign="bottom"><p align="center"></p></td>
     <td width="125" nowrap="nowrap" valign="bottom"><p>Cooked   food waste</p></td>
