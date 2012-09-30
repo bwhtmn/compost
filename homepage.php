@@ -1,4 +1,36 @@
+<?php
+include("dbinfo.php");
 
+$userid = utf8_decode($_GET["userid"]);
+$deliver_flag = utf8_decode($_GET["deliver_flag"]);
+$provide_flag = utf8_decode($_GET["provide_flag"]);
+$lat = utf8_decode($_GET["lat"]);
+$lng = utf8_decode($_GET["lng"]);
+
+// Opens a connection to a mySQL server
+$connection = mysql_connect ($host, $username, $password);
+if (!$connection) {
+  die("Not connected : " . mysql_error());
+}
+
+// Set the active mySQL database
+$db_selected = mysql_select_db($database, $connection);
+if (!$db_selected) {
+  die ("Can\'t use db : " . mysql_error());
+}
+
+if ($provide_flag == 'p') {
+	$sql = "Select userid, email, ( 6371 * acos( cos( radians(".$lat.") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(".$lng.") ) + sin( radians(".$lat.") ) * sin( radians( lat ) ) ) ) AS distance From users Where provide_flag = 'r' AND deliver_flag = '".$deliver_flag."' ORDER BY distance ASC";
+} else {
+	$sql = "Select userid, email, ( 6371 * acos( cos( radians(".$lat.") ) * cos( radians( lat ) ) * cos( radians( lng ) - radians(".$lng.") ) + sin( radians(".$lat.") ) * sin( radians( lat ) ) ) ) AS distance From users	Where provide_flag = 'p' AND deliver_flag = '".$deliver_flag."' ORDER BY distance ASC";
+}
+
+$result = mysql_query($sql);
+
+$num_rows = mysql_affected_rows($connection);
+mysql_close ($connection);
+
+?>
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -21,7 +53,30 @@
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    <script type="text/javascript">
+    
+    var results = new Array();
+    
+    <?php
+    $i = 0;
+    if ($num_rows<>0) {
+		// Iterate through the rows, adding JSON nodes for each
+		while ($row = @mysql_fetch_assoc($result)){
+			echo "results[".$i."] = new Array();\n";
+			echo "results[".$i."][0] = ".utf8_encode($row['userid']).";\n";
+			echo "results[".$i."][1] = '".utf8_encode($row['email'])."';\n";
+			echo "results[".$i."][2] = ".utf8_encode($row['distance']).";\n";
+			
+		
+			$i++;	
+		}
+	  
+	}
+    
+    ?>
+	
+	
+	</script>
     <!-- Le fav and touch icons -->
     <link rel="shortcut icon" href="assets/ico/favicon.ico">
     <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/ico/apple-touch-icon-144-precomposed.png">
@@ -55,6 +110,7 @@
     <div class="container">
 
       <h1>Homepage</h1>
+      <?php //echo $sql; ?>
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
